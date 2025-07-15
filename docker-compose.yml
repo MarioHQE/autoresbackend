@@ -10,11 +10,16 @@ services:
       - "3307:3306"
 
   
-  autoresbackend:
-    build: .
+  autoresbackend: 
+    container_name: autoresbackend
+    build: .   
     ports:
       - "8080:8080"
-    container_name: autoresbackend
+    environment:
+      - DATABASE_URL= jdbc:mysql://mysqldb:3306/autoresdb?createDatabaseIfNotExist=true
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=mario14y15.
+      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - autoresdb
     restart: on-failure
