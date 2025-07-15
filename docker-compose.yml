@@ -4,12 +4,11 @@ services:
     container_name: autoresdb
     environment:
       MYSQL_DATABASE: autoresdb
-      MYSQL_PASSWORD: mario14y15.
+      MYSQL_PASSWORD: mario14y15.s
       MYSQL_ROOT_PASSWORD: mario14y15.
     ports:
       - "3307:3306"
-    volumes:
-      - autoresdb_data:/var/lib/mysql
+
   
   autoresbackend:
     build: .
