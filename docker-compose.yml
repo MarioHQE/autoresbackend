@@ -1,0 +1,24 @@
+services:
+  autoresdb:
+    image: mysql:latest
+    container_name: autoresdb
+    environment:
+      MYSQL_DATABASE: autoresdb
+      MYSQL_PASSWORD: mario14y15.
+      MYSQL_ROOT_PASSWORD: mario14y15.
+    ports:
+      - "3307:3306"
+    volumes:
+      - autoresdb_data:/var/lib/mysql
+  
+  autoresbackend:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: autoresbackend
+    depends_on:
+      - autoresdb
+    restart: on-failure
+    
+
+       
